@@ -6,7 +6,7 @@ describe('work with basic elements', () => {
 
     })
     beforeEach(() => {
-       cy.reload()
+        cy.reload()
 
     })
 
@@ -48,7 +48,7 @@ describe('work with basic elements', () => {
 
     })
 
-    it.only('RadioButton', () => {
+    it('RadioButton', () => {
         cy.get('#formSexoFem')
             .click()
             .should('be.checked')
@@ -56,6 +56,17 @@ describe('work with basic elements', () => {
         cy.get('#formSexoMasc').should('be.not.checked')
 
         cy.get('[name = "formSexo"').should('have.length', 2)
+
+    })
+
+    it.only('Checkbox', () => {
+        cy.get('#formComidaPizza')
+            .click()
+            .should('be.checked')
+
+        cy.get('[name=formComidaFavorita').click({multiple: true})
+        cy.get('#formComidaPizza').should('be.not.checked')
+        cy.get('#formComidaCarne').should('be.checked')
 
     })
 
