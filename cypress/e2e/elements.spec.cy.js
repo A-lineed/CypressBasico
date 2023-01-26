@@ -5,6 +5,10 @@ describe('work with basic elements', () => {
         cy.visit('https://www.wcaquino.me/cypress/componentes.html')
 
     })
+    beforeEach(() => {
+       cy.reload()
+
+    })
 
     it('Text', () => {
         cy.get('body').should('contain', 'Cuidado')
@@ -23,7 +27,7 @@ describe('work with basic elements', () => {
         cy.get('#resultado').should('have.text', 'Voltou!')
     })
 
-    it.only('TextFields', () => {
+    it('TextFields', () => {
         cy.get('#formNome').type('Teste Cypress')
         cy.get('#formNome').should('have.value', 'Teste Cypress')
 
@@ -43,4 +47,17 @@ describe('work with basic elements', () => {
             .should('have.value', 'acerto')
 
     })
+
+    it.only('RadioButton', () => {
+        cy.get('#formSexoFem')
+            .click()
+            .should('be.checked')
+
+        cy.get('#formSexoMasc').should('be.not.checked')
+
+        cy.get('[name = "formSexo"').should('have.length', 2)
+
+    })
+
+
 })
