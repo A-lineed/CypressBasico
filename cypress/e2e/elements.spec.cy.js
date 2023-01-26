@@ -64,10 +64,25 @@ describe('work with basic elements', () => {
             .click()
             .should('be.checked')
 
-        cy.get('[name=formComidaFavorita').click({multiple: true})
+        cy.get('[name=formComidaFavorita').click({ multiple: true })
         cy.get('#formComidaPizza').should('be.not.checked')
         cy.get('#formComidaCarne').should('be.checked')
 
+    })
+
+    it.only('Combo', () => {
+        cy.get('[data-test="dataEscolaridade"]')
+            .select('Superior')
+            .should('have.value', 'superior')
+
+        cy.get('[data-test="dataEscolaridade"]')
+            .select('1graucomp')
+            .should('have.value', '1graucomp')
+
+    })
+
+    it.only('ComboMultiplo', () => {
+        cy.get('[data-testid="dataEsportes"]').select(['natacao', 'Corrida', 'nada'])
     })
 
 
