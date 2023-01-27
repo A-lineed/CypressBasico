@@ -6,15 +6,19 @@ describe('Cypress basics', () => {
         cy.pause()
 
         //cy.title().should('be.equal', 'Campo de Treinamento')
-       //cy.title().should('contain', 'Campo').debug()
+        //cy.title().should('contain', 'Campo').debug()
 
         cy.title()
             .should('be.equal', 'Campo de Treinamento')
             .and('contain', 'Campo')
 
+        cy.title().should(title => {
+            console.log(title)
+        })
+
     })
 
-    it.only('Should find and interact with an element', () => {
+    it('Should find and interact with an element', () => {
         cy.visit('https://www.wcaquino.me/cypress/componentes.html')
 
         cy.get('#buttonSimple')
@@ -22,4 +26,6 @@ describe('Cypress basics', () => {
             .should('have.value', 'Obrigado!');
 
     })
+
+
 })
