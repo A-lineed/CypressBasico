@@ -70,7 +70,7 @@ describe('work with basic elements', () => {
 
     })
 
-    it.only('Combo', () => {
+    it('Combo', () => {
         cy.get('[data-test="dataEscolaridade"]')
             .select('Superior')
             .should('have.value', 'superior')
@@ -81,7 +81,7 @@ describe('work with basic elements', () => {
 
     })
 
-    it.only('ComboMultiplo', () => {
+    it('ComboMultiplo', () => {
         cy.get('[data-testid="dataEsportes"]').select(['natacao', 'Corrida', 'nada'])
     })
 

@@ -62,7 +62,7 @@ describe('Esperas...', () => {
 
     })
 
-    it.only('Should vs Then', () => {
+    it('Should vs Then', () => {
         cy.get('#buttonListDOM').should($el => {
             // .should('have.length', 1)
             //console.log($el)
