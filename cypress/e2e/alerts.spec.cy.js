@@ -37,7 +37,7 @@ describe('work with alerts', () => {
         cy.get('#confirm').click()
     })
 
-    it.only("Deny", () => {
+    it("Deny", () => {
         cy.on('window:confirm', msg => {
             expect(msg).to.be.equal('Confirm Simples')
             return false;
@@ -47,5 +47,19 @@ describe('work with alerts', () => {
         })
         cy.get('#confirm').click()
     })
+
+    it.only("Prompt", () => {
+        cy.window().then(win => {
+            cy.stub(win, 'prompt').returns('50')
+        })
+        cy.on('window:confirm', msg => {
+            expect(msg).to.be.equal('Era 50?')
+        })
+        cy.on('window:alert', msg => {
+            expect(msg).to.be.equal(':D')
+        })
+        cy.get('#prompt').click()
+    })
+
 
 })
